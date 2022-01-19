@@ -24,15 +24,28 @@ LinkedList* LinkedList_create() {
 	return L;
 }
 
-void LinkedList_add_first (LinkedList* L, int val) {
-	if (L->begin == NULL){
-		Node* p = Node_Create(val);
-		L->begin = p;
-	} else {	
-		Node* p = Node_Create(val);
-		L->next = L->begin;
-		L->begin = p;
+// void LinkedList_add_first (LinkedList* L, int val) {
+// 	Node* p = Node_Create(val);
+// 	if (L->begin == NULL){
 
+// 		L->begin = p;
+// 	} else {	
+// 		p->next = L->begin;
+// 		L->begin = p;
+// 	}
+// }
+void LinkedList_add_first (LinkedList* L, int val) {	
+	Node* p = Node_Create(val);
+		p->next = L->begin;
+		L->begin = p;
+}
+
+void LinkedList_print(LinkedList* L){
+	Node* p = L->begin;
+	printf("L-> ");
+	while (p != NULL){
+		printf("%d-> ", p->val);
+		p= p->next;
 	}
-
+	printf("NULL\n");
 }
