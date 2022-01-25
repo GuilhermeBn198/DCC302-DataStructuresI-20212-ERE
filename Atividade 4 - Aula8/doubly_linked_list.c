@@ -82,19 +82,19 @@ void list_add_last(List *L, int val) {
 }
 
 void list_remove(List *L, int val) {
-  	Node *p = L->begin; 				//p node receives the first node!!!!
+  	Node *p = L->begin;
   	while (p != NULL) {
-    		if (p->val == val) { 			//verify if p is equal to val:
-      		if (L->begin->val == val) {  	//verify if the first node is equal to val:
-        			L->begin = p->next;  	//the first node point to p->next
-        			p->next->prev = NULL; 	//the prev pointer of the first node after p points to NULL
-      		} else {  				//if the first node isn't equal to val then:
-        			p->prev->next = p->next;// the next pointer of the previous node of p will point to the next pointer of p
+    		if (p->val == val) {
+      		if (L->begin->val == val) {
+        			L->begin = p->next;
+        			p->next->prev = NULL;
+      		} else {
+        			p->prev->next = p->next;
       		}
       		free(p);
       		L->size--;
     		}
-    		p = p->next;  				//run p through the list
+    		p = p->next;
   	}
 }
 
@@ -143,7 +143,7 @@ int main(){
 	List *L = create_list();
 	list_add_first(L,7);
 	list_add_first(L,4);
-	list_add_first(L,10);
+	//list_add_first(L,10);
 	puts("iteration with add first");
 	list_print(L);
 	puts("");
@@ -166,7 +166,6 @@ int main(){
 	puts("");
 	puts("iteration with list_remove");
 	list_remove(L,50);
-	list_remove(L,4);
 	list_print(L);
 	destroy_list(&L);
 	return 0;
