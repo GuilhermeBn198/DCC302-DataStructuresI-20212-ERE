@@ -143,7 +143,6 @@ int main(){
 	List *L = create_list();
 	list_add_first(L,7);
 	list_add_first(L,4);
-	list_add_first(L,2);
 	//list_add_first(L,10);
 	puts("iteration with add first");
 	list_print(L);
@@ -156,6 +155,17 @@ int main(){
 	puts("");
 	puts("iteration with add last");
 	list_add_last(L,50);
+	list_print(L);
+
+	puts("");
+
+	//list_print_inverse(L);
+	
+	puts("----------------------------------------");
+	
+	puts("");
+	puts("iteration with list_remove");
+	list_remove(L,50);
 	list_print(L);
 	destroy_list(&L);
 	return 0;
