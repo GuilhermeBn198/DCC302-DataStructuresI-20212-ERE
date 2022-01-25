@@ -34,7 +34,7 @@ List *create_list() {
 	return L;
 }
 
-void destroy_list(List **L_ref){
+void destroy_list(List **L_ref){ //free allocated space
 	List *L = *L_ref;
 	Node *p = L->begin;
 	Node *aux = NULL;
@@ -60,7 +60,6 @@ void list_add_first(List *L, int val){
 	//case 1: if the list is empty
 	if (list_is_empty(L)){
 		L->end = p;
-	
 	//case 2: if the list is not empty
 	} else { 
 		L->begin->prev = p; //next in the list point back to p
@@ -68,6 +67,37 @@ void list_add_first(List *L, int val){
 	L->begin = p; //the beggining node will point now to p
 	L->size++;
 }
+
+void list_add_last(List *L, int val) {
+  	Node *p = create_node(val);
+  	if (list_is_empty(L)) {
+    		L->end = p;
+    		L->begin = p;
+  	} else {
+    		p->prev = L->end;
+    		L->end->next = p;
+  	}
+  	L->end = p;
+  	L->size++;
+}
+
+void list_remove(List *L, int val) {
+  	Node *p = L->begin;
+  	while (p != NULL) {
+    		if (p->val == val) {
+      		if (L->begin->val == val) {
+        			L->begin = p->next;
+        			p->next->prev = NULL;
+      		} else {
+        			p->prev->next = p->next;
+      		}
+      		free(p);
+      		L->size--;
+    		}
+    		p = p->next;
+  	}
+}
+
 
 void list_print(List* L){
 	Node* p = L->begin;
@@ -114,11 +144,19 @@ int main(){
 	list_add_first(L,7);
 	list_add_first(L,4);
 	list_add_first(L,2);
-	list_add_first(L,10);
-
+	//list_add_first(L,10);
+	puts("iteration with add first");
 	list_print(L);
-	list_print_inverse(L);
+	puts("");
 
+	//list_print_inverse(L);
+	
+	puts("----------------------------------------");
+	
+	puts("");
+	puts("iteration with add last");
+	list_add_last(L,50);
+	list_print(L);
 	destroy_list(&L);
 	return 0;
 }
