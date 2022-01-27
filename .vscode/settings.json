@@ -10,6 +10,9 @@
 		"vector": "c",
 		"string_view": "c",
 		"initializer_list": "c",
-		"regex": "c"
+		"regex": "c",
+		"bitset": "c",
+		"typeindex": "c",
+		"typeinfo": "c"
 	}
 }

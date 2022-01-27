@@ -98,7 +98,6 @@ void list_remove(List *L, int val) {
   	}
 }
 
-
 void list_print(List* L){
 	Node* p = L->begin;
 	printf("L-> ");

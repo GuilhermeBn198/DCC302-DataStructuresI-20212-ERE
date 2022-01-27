@@ -61,6 +61,6 @@ int main(int argc, char *argv[])
     printf("\t Data de nascimento: %d de %s de %d \n", funcionarios[i].nascimento.dia, funcionarios[i].nascimento.mes, funcionarios[i].nascimento.ano);
     printf("\t Codigo do setor: %d \n \n", funcionarios[i].cod_setor);
   }
-
+  
   return 0;
 }
