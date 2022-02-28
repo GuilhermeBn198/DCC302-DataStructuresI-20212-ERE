@@ -89,11 +89,11 @@ int main(){
 	// top_val = Stack_peek(S);
 	// printf("top_val = %d\n", top_val);
 
+	Stack_print(S);
 	puts("\nPushing: 0, 10, 20");
 	Stack_push(S, 0);
 	Stack_push(S, 10);
 	Stack_push(S, 20);
-	Stack_print(S);
 
 	puts("\nPeeking");
 	top_val = Stack_peek(S);
@@ -107,6 +107,7 @@ int main(){
 	Stack_push(S, 30);
 	Stack_push(S, 40);
 	Stack_push(S, 50);
+	puts("");
 	Stack_print(S);
 
 
