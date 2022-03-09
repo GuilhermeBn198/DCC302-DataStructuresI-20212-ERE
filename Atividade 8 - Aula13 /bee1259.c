@@ -17,10 +17,44 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Aluno{
-	
-}Aluno;
+int ascend(void const *a, void const *b ){
+    return (*(int*)a - *(int*)b );
+}
 
-int cmpfunc (const void * a, const void * b) {
-   return ( *(int*)a - *(int*)b );
+int descend(void const *a, void const *b ){
+    return (*(int*)b - *(int*)a );
+}
+
+int main(){
+    int n, i, num, par, impar;
+    
+    scanf("%d", &n);
+    par = 0;
+    impar = 0;
+    int numpar[n];
+    int numimpar[n];
+    
+    for(i = 0; i < n; i++){
+        scanf("%d", &num);
+        if(num%2 == 0){
+            numpar[par] = num;
+            par++;
+        }else{
+            numimpar[impar] = num;
+            impar++;
+        }
+    }
+    qsort(numpar, par, sizeof(int), ascend);
+    qsort(numimpar, impar, sizeof(int), descend); 
+    puts("");
+    puts("ordenando...");
+    puts("");
+    for(i = 0; i < par; i++){
+        printf("%d\n",numpar[i]);
+    }
+    for(i = 0; i < impar; i++){
+        printf("%d\n",numimpar[i]);
+    }
+    
+    return 0;
 }
